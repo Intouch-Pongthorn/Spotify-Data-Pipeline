@@ -1,4 +1,6 @@
-from gettoken import get_token
+from authorize import user_token as token
+from get import get_recently_played
+import pandas as pd
 
-token = get_token()
-print(token)
+history_playlist = get_recently_played(token,1680536134)
+print(history_playlist)
