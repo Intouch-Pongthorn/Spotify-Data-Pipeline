@@ -128,3 +128,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#spotify token cache or any .cachexxxxxxxxxx files
+.cache* 
+#attic.py - a collection of unused snippets
+attic.py
