@@ -17,8 +17,9 @@ df = pd.DataFrame(
     "artist":pd.Series([format.extract_artists_name(data["track"]["artists"]) for data in history_playlist]),
     "release_date": pd.Series([data["track"]["album"]["release_date"] for data in history_playlist]),
     "duration_minute": pd.Series([format.to_duration_minute(data["track"]["duration_ms"]) for data in history_playlist]),
-    "played_at": pd.Series([format.to_th_time(data["played_at"]) for data in history_playlist])
+    "played_at": pd.to_datetime(pd.Series([format.to_th_time(data["played_at"]) for data in history_playlist])),
     }
 )
-df.to_csv(file_location+"history.csv")
+# df.to_csv(file_location+"history.csv")
 print(df)
+print(df.dtypes)
