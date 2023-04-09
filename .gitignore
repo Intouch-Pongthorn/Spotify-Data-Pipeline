@@ -133,3 +133,6 @@ dmypy.json
 .cache* 
 #attic.py - a collection of unused snippets
 attic.py
+
+#airflow
+airflow/logs
