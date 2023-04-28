@@ -14,9 +14,9 @@ def extract_artists_name(lst:list[dict])->str:
     return names_one_line
 
 def to_duration_minute(millisecond:int)->float:
-    second:int = millisecond //1000
+    second:int = millisecond // 1000
     min,sec = divmod(second,60)
-    duration:float =float(str(f"{min}.{sec}"))
+    duration:float =float(str(min)+"."+str(sec).zfill(2))
     return duration
 
 def to_th_time(utc_time_str:str)->str:
