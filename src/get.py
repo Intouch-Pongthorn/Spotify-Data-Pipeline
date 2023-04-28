@@ -30,10 +30,10 @@ def get_top_tracks(token,artist_id,country='TH'):
     json_result = json.loads(result.content)["tracks"]
     return json_result
 
-def get_recently_played(token,limit=50):
+def get_recently_played(token,after,limit=50):
     url = "https://api.spotify.com/v1/me/player/recently-played"
     headers = get_auth_header(token)
-    query_str = f"?limit={limit}"
+    query_str = f"?after={after}&limit={limit}"
     query_url = url+query_str
     result = get(query_url,headers=headers)
     json_result = json.loads(result.content)["items"]
