@@ -1,6 +1,7 @@
 from requests import get
 import json
 import pprint
+from datetime import datetime,timedelta
 
 def get_auth_header(token):
     return {"Authorization": "Bearer "+token}
@@ -43,8 +44,10 @@ def get_recently_played(token,after,limit=50):
 if __name__ == '__main__':
     #import user_token if directly run this file
     from authorize import user_token as token
-
-    history_list = get_recently_played(token,50)
+    previous_date = datetime.today() - timedelta(days=1)
+    millisec_timestamp = int(previous_date.timestamp() *1000)
+    
+    history_list = get_recently_played(token,after=millisec_timestamp,limit=50)
     for history in history_list:
         pprint.pprint(history_list)
     print(token)
