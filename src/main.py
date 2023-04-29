@@ -4,12 +4,13 @@ import pandas as pd
 from dotenv import load_dotenv
 import format
 import os
+from datetime import datetime,timedelta
 
 load_dotenv()
-
 file_location = os.getenv('FILE_LOCATION')
-
-history_playlist = get_recently_played(user_token,50)
+previous_date = datetime.today() - timedelta(days=1)
+millisec_timestamp = int(previous_date.timestamp() *1000)
+history_playlist = get_recently_played(user_token,after=millisec_timestamp,limit=50)
 df = pd.DataFrame(
     {
     "song_name": pd.Series([data["track"]["name"] for data in history_playlist]),
@@ -20,6 +21,5 @@ df = pd.DataFrame(
     "played_at": pd.to_datetime(pd.Series([format.to_th_time(data["played_at"]) for data in history_playlist])),
     }
 )
-# df.to_csv(file_location+"history.csv")
+df.to_csv(file_location+"history.csv")
 print(df)
-print(df.dtypes)
