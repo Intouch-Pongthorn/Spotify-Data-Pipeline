@@ -24,6 +24,11 @@ def to_th_time(utc_time_str:str)->str:
     th_time:str = utc_time.astimezone(pytz.timezone('Asia/Bangkok')).strftime('%d-%m-%Y %H:%M:%S')
     return th_time
 
+def set_file_name(date:datetime)->str:
+    str_date = date.astimezone(pytz.timezone('Asia/Bangkok')).strftime('%d-%m-%Y')
+    file_name = "playlist_"+str_date+".csv"
+    return file_name
+
 
 if __name__=="__main__":
     minute = to_duration_minute(228623)

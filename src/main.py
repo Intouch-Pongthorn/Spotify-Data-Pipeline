@@ -7,7 +7,7 @@ import os
 from datetime import datetime,timedelta
 
 load_dotenv()
-file_location = os.getenv('FILE_LOCATION')
+default_dir_location = os.getenv('DEFAULT_DIR_LOCATION') or os.getcwd()
 previous_date = datetime.today() - timedelta(days=1)
 millisec_timestamp = int(previous_date.timestamp() *1000)
 history_playlist = get_recently_played(user_token,after=millisec_timestamp,limit=50)
@@ -21,5 +21,5 @@ df = pd.DataFrame(
     "played_at": pd.to_datetime(pd.Series([format.to_th_time(data["played_at"]) for data in history_playlist])),
     }
 )
-df.to_csv(file_location+"history.csv")
+df.to_csv(default_dir_location+format.set_file_name(previous_date))
 print(df)
