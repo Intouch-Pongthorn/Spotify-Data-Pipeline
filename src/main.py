@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from authorize import user_token
 from get import get_recently_played
 import pandas as pd
