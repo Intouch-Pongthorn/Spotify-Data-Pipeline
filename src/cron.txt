@@ -1,0 +1,2 @@
+# cron command to run this pipeline daily at mid night
+0 0 * * * full_path_to_python_intepreter  full_path_to_the_script_file
