@@ -21,11 +21,11 @@ def to_duration_minute(millisecond:int)->float:
 
 def to_th_time(utc_time_str:str)->str:
     utc_time:datetime = dateparser.parse(utc_time_str)
-    th_time:str = utc_time.astimezone(pytz.timezone('Asia/Bangkok')).strftime('%d-%m-%Y %H:%M:%S')
+    th_time:str = utc_time.astimezone(pytz.timezone('Asia/Bangkok')).strftime('%Y-%m-%d %H:%M:%S')
     return th_time
 
 def set_file_name(date:datetime)->str:
-    str_date = date.astimezone(pytz.timezone('Asia/Bangkok')).strftime('%d-%m-%Y')
+    str_date = date.astimezone(pytz.timezone('Asia/Bangkok')).strftime('%Y-%m-%d')
     file_name = "playlist_"+str_date+".csv"
     return file_name
 
