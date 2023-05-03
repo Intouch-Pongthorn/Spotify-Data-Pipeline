@@ -134,5 +134,5 @@ dmypy.json
 #attic.py - a collection of unused snippets
 attic.py
 
-#airflow
-airflow/logs
+#EC2 confidential
+AWS/ 
