@@ -19,9 +19,9 @@ def run_spotify_etl():
         "song_name": pd.Series([data["track"]["name"] for data in history_playlist]),
         "album_type": pd.Series([data["track"]["album"]["album_type"] for data in history_playlist]),
         "artist":pd.Series([format.extract_artists_name(data["track"]["artists"]) for data in history_playlist]),
-        "release_date": pd.Series([data["track"]["album"]["release_date"] for data in history_playlist]),
+        "release_date": pd.to_datetime([data["track"]["album"]["release_date"] for data in history_playlist]),
         "duration_minute": pd.Series([format.to_duration_minute(data["track"]["duration_ms"]) for data in history_playlist]),
-        "played_at": pd.to_datetime(pd.Series([format.to_th_time(data["played_at"]) for data in history_playlist])),
+        "played_at": pd.to_datetime([format.to_th_time(data["played_at"]) for data in history_playlist]),
         }
     )
     df.to_csv(default_dir_location+format.set_file_name(previous_date))
