@@ -24,7 +24,7 @@ def run_spotify_etl():
         "played_at": pd.to_datetime([format.to_th_time(data["played_at"]) for data in history_playlist]),
         }
     )
-    df.to_csv(default_dir_location+format.set_file_name(previous_date))
+    df.to_csv("s3://intouch-spotify-data-pipeline-bucket/"+format.set_file_name(previous_date))
     print(df)
 
 
